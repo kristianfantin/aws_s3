@@ -37,3 +37,4 @@ target/
 *.ipr
 .target
 /.idea/
+/.mvn/
