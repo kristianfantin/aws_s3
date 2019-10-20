@@ -28,15 +28,17 @@ public class FileService {
         this.s3 = s3;
     }
 
-    public List<ResponseLocalization> getResponse(List<String> filenames, ParamsIn paramsIn) {
+    public List<ResponseLocalization> getResponse(List<String> filenames, ParamsIn paramsIn, int quantityFiles) {
         List<ResponseLocalization> response = new ArrayList<>();
 
+        int i = 1;
         for (String filename : filenames) {
-            LOGGER.info("Filename: " + filename);
+            LOGGER.info(i + " from " + quantityFiles + ": Filename: " + filename);
 
             InputStream inputStream = download(paramsIn, filename);
             String wordLookingFor = paramsIn.getWordLookingFor();
             response = getCurrentList(filename, inputStream, wordLookingFor);
+            i++;
             if (!response.isEmpty())
                 break;
         }

@@ -41,9 +41,10 @@ public class InterfaceController {
         bucket = paramsIn.getBucket();
 
         List<String> fileNames = getFileNames(paramsIn);
-        LOGGER.info(String.format("Files Quantity: %d", fileNames.size()));
+        int quantityFiles = fileNames.size();
+        LOGGER.info(String.format("Files Quantity: %d", quantityFiles));
 
-        return fileService.getResponse(fileNames, paramsIn);
+        return fileService.getResponse(fileNames, paramsIn, quantityFiles);
     }
 
     private List<String> getFileNames(ParamsIn paramsIn) {
