@@ -39,8 +39,10 @@ public class FileService {
             String wordLookingFor = paramsIn.getWordLookingFor();
             response = getCurrentList(filename, inputStream, wordLookingFor);
             i++;
-            if (!response.isEmpty())
+            if (!response.isEmpty()) {
+                LOGGER.info("Figured out: Filename: " + filename);
                 break;
+            }
         }
 
         return response;
